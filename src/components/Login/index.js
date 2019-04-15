@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import UserService from '../../services/UserService'
 
 class Login extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      username : "",
+      password : ""
+    }
+
+    this.userService = new UserService()
+    this.login = this.login.bind(this)
+  }
+
+  login() {
+    let username = this.state.username
+    let password = this.state.password
+
+    
+  }
 
   render() {
     return (
@@ -16,7 +35,7 @@ class Login extends Component {
             <input className="login-form-text-input" type="password"></input>
           </div>
 
-          <Link className='login-page-link' to='/login'><button className="login-page-button">LOGIN</button></Link>
+          <button onClick={this.login} className="login-page-button">LOGIN</button>
           <Link className='login-page-link' to='/signup'><button className="login-page-button">SIGN UP</button></Link>
         </div>
       </div>

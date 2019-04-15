@@ -1,7 +1,33 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import UserService from '../../services/UserService'
 
 class Signup extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      username : "",
+      password : "",
+      confirm_password : ""
+    }
+
+    this.userService = new UserService()
+    this.createAccount = this.createAccount.bind(this)
+  }
+
+  createAccount() {
+    let username = this.state.username
+    let password = this.state.password
+    let confirm_password = this.state.confirm_password
+
+    if (password === confirm_password) {
+      alert("passwords don't match")
+      return
+    }
+
+    //this.userService.register(this.state.username, this.state.password)
+  }
 
   render() {
     return (
@@ -19,7 +45,7 @@ class Signup extends Component {
           </div>
 
           <Link className='login-page-link' to='/login'><button className="login-page-button">LOGIN</button></Link>
-          <Link className='login-page-link' to='/signup'><button className="login-page-button">SIGN UP</button></Link>
+          <button onClick={this.createAccount} className="login-page-button">SIGN UP</button>
         </div>
       </div>
     )
