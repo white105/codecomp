@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import alertify from 'alertifyjs';
 import { Link } from 'react-router-dom';
 import UserService from '../../services/UserService'
+
 
 class Signup extends Component {
 
@@ -12,8 +14,9 @@ class Signup extends Component {
       confirm_password : ""
     }
 
-    this.userService = new UserService()
     this.createAccount = this.createAccount.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.userService = new UserService()
   }
 
   createAccount() {
@@ -21,12 +24,49 @@ class Signup extends Component {
     let password = this.state.password
     let confirm_password = this.state.confirm_password
 
-    if (password === confirm_password) {
-      alert("passwords don't match")
+    if (username.length == 0) {
+      alertify
+        .alert("username text input is empty", function(){
+          alertify.message('OK');
+        });
+      return
+    }
+
+    if (password.length == 0) {
+      alertify
+        .alert("password text input is empty", function(){
+          alertify.message('OK');
+        });
+      return
+    }
+
+    if (confirm_password.length == 0) {
+      alertify
+        .alert("confirm password text input is empty", function(){
+          alertify.message('OK');
+        });
+      return
+    }
+
+    if (!(password === confirm_password)) {
+      alertify
+        .alert("password and confirm password do not match", function(){
+          alertify.message('OK');
+        });
       return
     }
 
     //this.userService.register(this.state.username, this.state.password)
+  }
+
+  handleInputChange(event) {
+    const target = event.target
+    const value = target.value
+    const name = target.name
+
+    this.setState({
+      [name]: value
+    })
   }
 
   render() {
@@ -37,11 +77,11 @@ class Signup extends Component {
           <h3 id="login-form-title">SIGN UP</h3>
           <div className="loginFormRow">
             <h4 className="login-form-subtitle">USERNAME</h4>
-            <input className="login-form-text-input" type="text"></input>
+            <input name="username" value={this.state.username} onChange={this.handleInputChange} className="login-form-text-input" type="text"></input>
             <h4 className="login-form-subtitle">PASSWORD</h4>
-            <input className="login-form-text-input" type="password"></input>
+            <input name="password" value={this.state.password} onChange={this.handleInputChange} className="login-form-text-input" type="password"></input>
             <h4 className="login-form-subtitle">CONFIRM PASSWORD</h4>
-            <input className="login-form-text-input" type="password"></input>
+            <input name="confirm_password" value={this.state.confirm_password} onChange={this.handleInputChange} className="login-form-text-input" type="password"></input>
           </div>
 
           <Link className='login-page-link' to='/login'><button className="login-page-button">LOGIN</button></Link>
