@@ -1,0 +1,62 @@
+#HomePageComponent {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  background-color: #282c34;
+}
+
+#website-logo {
+  margin-top: 3rem;
+  width: 65rem;
+  height: 35rem;
+  background-color: #282c34;
+}
+
+#home-page-sub-container {
+  display: flex;
+  justify-content: space-between;
+  width: 30rem;
+  height: 5rem;
+  //border: 3px solid white;
+  margin: auto;
+  //background: #8400ff;
+}
+
+.home-page-button {
+  font-family: 'Raleway', sans-serif;
+  width: 12.5rem;
+  height: 3rem;
+  background: #282c34;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+  border: 3px solid white;
+  margin: auto;
+  margin-top: 1rem;
+  outline: none;
+  &:hover {
+    color: #8400ff;
+    background: white;
+    border: 3px solid #8400ff;
+  }
+  &:active {
+    color: #282c34;
+  }
+}
+
+.home-page-link {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  flex: 1;
+}
+
+#codecomp-trophy-small {
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 8rem;
+  height: 3.5rem;
+}

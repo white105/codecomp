@@ -1,0 +1,68 @@
+#LoginComponent {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  background-color: #282c34;
+}
+
+#loginForm {
+  width: 40rem;
+  height: 40rem;
+  border: 3px solid #8400ff;
+  margin: auto;
+  margin-top: 3rem;
+  background: white;
+}
+
+#login-form-title {
+  font-size: 2rem;
+  color: #282c34;
+  font-family: 'Raleway', sans-serif;
+}
+
+.loginFormRow {
+  margin-top: 5rem;
+}
+
+.login-form-text-input {
+  width: 18rem;
+  height: 2rem;
+  margin: 1rem;
+  border: 2px solid #282c34;
+  outline: none;
+}
+
+.login-form-subtitle {
+  color: #282c34;
+}
+
+.login-page-button {
+  font-family: 'Raleway', sans-serif;
+  width: 12.5rem;
+  height: 3rem;
+  background: #282c34;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+  border: 3px solid white;
+  margin: auto;
+  margin-top: 3rem;
+  outline: none;
+  &:hover {
+    color: #8400ff;
+    background: white;
+    border: 3px solid #8400ff;
+  }
+  &:active {
+    color: #282c34;
+  }
+}
+
+.login-page-link {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  flex: 1;
+}
