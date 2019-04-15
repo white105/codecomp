@@ -1,0 +1,83 @@
+#profileComponent {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  background-color: #282c34;
+}
+
+#profileContainer {
+  margin: auto;
+  margin-top: 7.5rem;
+  width: 14rem;
+  height: 14rem;
+  border: 1px solid white;
+  border-radius: 50%;
+  padding-top: 1rem;
+}
+
+#codecomp-avatar-large {
+  width: 10rem;
+  height: 12rem;
+}
+
+.profile-title {
+  color: white;
+}
+
+#friend-list {
+  padding: 0;
+  width: 20rem;
+  height: 15rem;
+  background: white;
+  margin: auto;
+  margin-top: 2rem;
+  overflow: scroll;
+  list-style: none;
+  border: 3px solid #8400ff;
+  background: #282c34;
+  border-radius: 1rem;
+  line-height: 2rem;
+}
+
+.friend-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  width: 20rem;
+  height: 2rem;
+  text-align: center;
+  font-size: 1.3rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+.codecomp-friends-list-trophy-container {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid white;
+  width: 10rem;
+  height: 2rem;
+  flex: 1;
+}
+
+
+.codecomp-trophy-friends-list {
+  width: 4rem;
+  height: 2rem;
+  flex: 1;
+}
+
+.friend-list-friend-name {
+  font-size: 1.2rem;
+}
+
+.friend-list-friend-tophies-title {
+  font-size: 1.2rem;
+  color: black;
+  flex: 1;
+}

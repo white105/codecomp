@@ -6,14 +6,14 @@ class Login extends Component {
   render() {
     return (
       <div id="LoginComponent">
-      <Link className='home-page-link' to='/'><img id="codecomp-trophy-small" src={require("../../assets/codecomp-small.png")}></img></Link>
+        <Link className='home-page-link' to='/'><img id="codecomp-trophy-small" src={require("../../assets/codecomp-small.png")}></img></Link>
         <div id="loginForm">
           <h3 id="login-form-title">LOGIN</h3>
           <div className="loginFormRow">
             <h4 className="login-form-subtitle">USERNAME</h4>
             <input className="login-form-text-input" type="text"></input>
             <h4 className="login-form-subtitle">PASSWORD</h4>
-            <input className="login-form-text-input" type="text"></input>
+            <input className="login-form-text-input" type="password"></input>
           </div>
 
           <Link className='login-page-link' to='/login'><button className="login-page-button">LOGIN</button></Link>
