@@ -1,8 +1,11 @@
 @import './styles/_home_page.scss';
 @import './styles/_login.scss';
+@import './styles/_play_mode.scss';
 @import './styles/_profile.scss';
+@import './styles/_rank_choices.scss';
 @import './styles/_signup.scss';
 @import './styles/_tool_bar.scss';
+@import './styles/_loader.scss';
 
 #root {
   width: 100%;
@@ -14,4 +17,28 @@
   width: 100%;
   height: 100%;
   text-align: center;
+}
+
+#trophy-container-top-left {
+  display: flex;
+  justify-content: space-around;
+  width: 8rem;
+  height: 5rem;
+  position: absolute;
+  right: 7.5rem;
+  padding-top: 1.2rem;
+
+}
+
+#font-aweome-title {
+  font-size: 1.75rem;
+  color: #8400ff;
+  margin: 0;
+}
+
+#font-awesome-trophy {
+  color: #8400ff;
+  font-size: 2rem;
+  width: 5rem;
+  height: 5rem;
 }

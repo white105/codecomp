@@ -31,7 +31,7 @@ class Profile extends Component {
 
   render() {
     let friends = this.state.friends.map((friend) => {
-      let bgColor = this.getRandomColor()
+      let bgColor = "white"
       return (
         <li style={{backgroundColor : bgColor}} className="friend-item">
           <h4 className="friend-list-friend-name">{friend.name}</h4>
@@ -51,6 +51,7 @@ class Profile extends Component {
 
         <h3 className="profile-title">{this.state.username}</h3>
         <h3 className="profile-title">trophies - {this.state.trophies}</h3>
+        <h4 className="friends-list-title">Friends</h4>
         <ul id="friend-list">
           {friends}
         </ul>

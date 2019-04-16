@@ -1,0 +1,26 @@
+#loader-icon {
+  color: #8400ff;
+  font-size: 20rem;
+  margin-top: 10rem;
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+#loader-title {
+  color: white;
+  width: 30rem;
+  margin: auto;
+  margin-top: 5rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}

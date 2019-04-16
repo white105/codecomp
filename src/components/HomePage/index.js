@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import CoderPad from '../CoderPad'
 import { Link } from 'react-router-dom';
+import FontAwesome from 'react-fontawesome'
 
 class HomePage extends Component {
 
   constructor() {
     super()
     this.state = {
-      loggedIn : false
+      loggedIn : true
     }
 
   }
@@ -18,10 +19,15 @@ class HomePage extends Component {
     if (this.state.loggedIn) {
       return (
         <div id="HomePageComponent">
+          <div id="trophy-container-top-left">
+          <FontAwesome id='font-awesome-trophy' name='trophy' size='2x'/>
+            <h3 id="font-aweome-title">105</h3>
+
+          </div>
         <Link className='home-page-link' to='/profile'><img id="codecomp-avatar-small" src={require("../../assets/codecomp-profile.png")}></img></Link>
           <div id="home-page-main-container">
             <img id="website-logo" src={require("../../assets/codecomp.png")}></img>
-            <button className="home-page-button">PLAY</button>
+            <Link className='home-page-link' to='/play-mode'><button className="home-page-button">PLAY</button></Link>
           </div>
         </div>
       );

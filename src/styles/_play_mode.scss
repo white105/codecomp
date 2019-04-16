@@ -1,0 +1,32 @@
+#PlayModeComponent {
+  display: flex;
+  justify-content: space-between;
+  width: 50rem;
+  height: 30rem;
+  margin: auto;
+  margin-top: 10rem;
+}
+
+.playModeChoice {
+  width: 20rem;
+  height: 30rem;
+  font-family: 'Raleway', sans-serif;
+  background: #8400ff;
+  border: 3px solid white;
+  color: white;
+  &:hover {
+    color: #282c34;
+    border: 3px solid #8400ff;
+    background: white;
+    cursor: pointer;
+  }
+}
+
+.playModeChoiceTitle {
+  font-size: 1.75rem;
+}
+
+.playModeChoiceDescription {
+  font-size: 1.5rem;
+  padding: 1rem;
+}

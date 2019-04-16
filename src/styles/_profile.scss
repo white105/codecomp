@@ -11,7 +11,7 @@
   margin-top: 7.5rem;
   width: 14rem;
   height: 14rem;
-  border: 1px solid white;
+  border: 3px solid white;
   border-radius: 50%;
   padding-top: 1rem;
 }
@@ -23,20 +23,22 @@
 
 .profile-title {
   color: white;
+  font-size: 1.5rem;
 }
 
 #friend-list {
+  position: absolute;
+  top: 10rem;
+  left: 5rem;
   padding: 0;
-  width: 20rem;
-  height: 15rem;
-  background: white;
+  width: 25rem;
+  height: 25rem;
   margin: auto;
   margin-top: 2rem;
   overflow: scroll;
   list-style: none;
   border: 3px solid #8400ff;
-  background: #282c34;
-  border-radius: 1rem;
+  background: white;
   line-height: 2rem;
 }
 
@@ -46,23 +48,27 @@
   align-items: center;
   padding-top: .5rem;
   padding-bottom: .5rem;
-  width: 20rem;
+  width: 30rem;
   height: 2rem;
   text-align: center;
   font-size: 1.3rem;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
+  border-bottom: 1px solid black;
+}
+
+.friends-list-title {
+  position: absolute;
+  top: 7rem;
+  left: 15rem;
   color: white;
-  border-bottom: 1px solid white;
+  font-size: 1.5rem;
 }
 
 .codecomp-friends-list-trophy-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   border: 1px solid white;
-  width: 10rem;
-  height: 2rem;
-  flex: 1;
 }
 
 
@@ -77,7 +83,7 @@
 }
 
 .friend-list-friend-tophies-title {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: black;
   flex: 1;
 }
