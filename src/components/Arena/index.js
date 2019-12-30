@@ -1,21 +1,13 @@
 import React, { Component } from "react";
-import alertify from "alertifyjs";
-import { Link } from "react-router-dom";
-import UserService from "../../services/UserService";
-
-//text editor
-
-import Editor from "react-simple-code-editor";
-
-import { highlight } from "prismjs/components/prism-core";
-import "prismjs/components/prism-markup";
-import "prismjs/components/prism-jsx";
-import { languages } from "prismjs/components/prism-core";
-
 import "prismjs/components/prism-clike";
+import { highlight, languages } from "prismjs/components/prism-core";
 import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-markup";
 import "prismjs/components/prism-ruby";
 import "prismjs/themes/prism.css";
+//text editor
+import Editor from "react-simple-code-editor";
 
 const code = `function add(a, b) {
   return a + b;
