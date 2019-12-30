@@ -56,7 +56,7 @@ class Signup extends Component {
       return
     }
 
-    //this.userService.register(this.state.username, this.state.password)
+    this.userService.register(this.state.username, this.state.password)
   }
 
   handleInputChange(event) {

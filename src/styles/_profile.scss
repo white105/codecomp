@@ -2,7 +2,6 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: white;
   background-color: #282c34;
 }
 
@@ -16,9 +15,17 @@
   padding-top: 1rem;
 }
 
-#codecomp-avatar-large {
+.codecomp-avatar-large {
   width: 10rem;
   height: 12rem;
+}
+
+.codecomp-avatar-small {
+  width: 5rem;
+  height: 6rem;
+  padding: 1rem;
+  border: 2px solid #8400ff;
+  border-radius: 50%;
 }
 
 .profile-title {
@@ -26,8 +33,65 @@
   font-size: 1.5rem;
 }
 
-#friend-list {
+.profile-color-button-container {
+  width: 35rem;
+  height: 5rem;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.color-button {
+  width: 3.5rem;
+  height: 3.5rem;
+  outline: none;
+  border-radius: 50%;
+  border: 2px solid white;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#red-button {
+  background: red;
+}
+
+#blue-button {
+  background: blue;
+}
+
+#green-button {
+  background: green;
+}
+
+#purple-button {
+  background: purple;
+}
+
+#orange-button {
+  background: orange;
+}
+
+
+.profile-sidebar {
   position: absolute;
+  right: 0;
+  width: 20rem;
+  border-left: 3px solid #8400ff;
+  height: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.friends-list-title {
+  color: white;
+  font-size: 1.5rem;
+}
+
+
+.friend-list {
   top: 10rem;
   left: 5rem;
   padding: 0;
@@ -37,9 +101,9 @@
   margin-top: 2rem;
   overflow: scroll;
   list-style: none;
-  border: 3px solid #8400ff;
-  background: white;
   line-height: 2rem;
+  background: #282c34;
+  color: white;
 }
 
 .friend-item {
@@ -55,14 +119,12 @@
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
   border-bottom: 1px solid black;
-}
-
-.friends-list-title {
-  position: absolute;
-  top: 7rem;
-  left: 15rem;
-  color: white;
-  font-size: 1.5rem;
+  color:white;
+  height: 4rem;
+  outline: none;
+  border: none;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 .codecomp-friends-list-trophy-container {
@@ -86,4 +148,19 @@
   font-size: 1.25rem;
   color: black;
   flex: 1;
+}
+
+.profile-image-choices {
+  width: 35rem;
+  height: 5rem;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-image-choice {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 2px solid white;
 }

@@ -1,0 +1,70 @@
+.arena {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.info-bar {
+  flex: 1;
+  min-height: 100%;
+  border-right: 1px solid #8400ff;
+  color: white;
+}
+
+.text-editor {
+  flex: 3;
+  border-left: 1px solid #8400ff;
+}
+
+.editor {
+  background: #242730;
+}
+
+.problem-description {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.problem-example {
+  background: white;
+  width: 80%;
+  margin: auto;
+  height: 10rem;
+}
+
+.opponent-view {
+  width: 20rem;
+  height: 20rem;
+  border: 2px solid black;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: white;
+  border: 3px solid #8400ff;
+}
+
+
+.submit-button {
+  width: 7rem;
+  height: 2.2rem;
+  border-radius: .5rem;
+  background: #5cb85c;
+  position: relative;
+  display: block;
+  margin: auto;
+  font-size: 1rem;
+  color: white;
+}
+
+.text-editor {
+  background: white;
+}
+
+
+.code-editor {
+  width: 30%;
+  height: 50%;
+  overflow: scroll;
+  outline: none;
+}

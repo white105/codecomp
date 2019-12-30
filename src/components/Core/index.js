@@ -8,6 +8,8 @@ import Profile from '../Profile'
 import Signup from '../Signup'
 import RankChoices from '../RankChoices'
 
+import Arena from '../Arena'
+
 class Core extends Component {
   render() {
     return (
@@ -21,6 +23,8 @@ class Core extends Component {
               <Route exact path='/signup' component={Signup} />
               <Route exact path='/play-mode-1v1' component={RankChoices} />
               <Route exact path='/loader' component={Loader} />
+
+              <Route exact path='/arena' component={Arena} />
             </div>
         </Router>
       </div>

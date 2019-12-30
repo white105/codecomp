@@ -7,7 +7,7 @@
   margin-top: 5rem;
 }
 
-.rankChoice {
+.rankChoice, .lockedRankChoice {
   width: 15rem;
   height: 17.5rem;
   font-family: 'Raleway', sans-serif;
@@ -29,4 +29,38 @@
 .rankChoiceDescription {
   font-size: 1.25rem;
   padding: 1rem;
+}
+
+.lockImageContainer {
+  width: 10rem;
+  height: 10rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.lockImage {
+  position: absolute;
+  z-index: 2;
+  width: 10rem;
+  height: 10rem;
+}
+
+.grayOverlay {
+  position: relative;
+  z-index: 3;
+  width: 15rem;
+  height: 17.5rem;
+  background: rgba(39,62,84,0.78);
+  overflow: hidden;
+  z-index: 3;
+}
+
+.lockedRankChoice {
+  &:hover {
+    color: white;
+    border: 3px solid white;
+    background: rgba(39,62,84,0.92);
+    cursor: pointer;
+  }
 }

@@ -3,12 +3,16 @@ var request = require('request')
 class UserService {
 
   register(username, password) {
+
+    console.log("we made it here")
     var postData = {
       username : username,
       password : password
     };
 
-    var url = 'http://localhost:3000/register'
+    console.log("postData", postData)
+
+    var url = 'http://localhost:8080/register'
     var options = {
       method: 'post',
       body: postData,
@@ -23,8 +27,6 @@ class UserService {
       }
       var headers = res.headers
       var statusCode = res.statusCode
-
-      window.location.href = 'http://localhost:3000/'
     })
   }
 
@@ -34,7 +36,7 @@ class UserService {
       password : password
     };
 
-    var url = 'http://localhost:3000/login'
+    var url = 'http://localhost:8080/login'
     var options = {
       method: 'post',
       body: postData,
@@ -53,7 +55,7 @@ class UserService {
       if (statusCode == 404 || statusCode == 401) {
         alert('User does not exist')
       } else {
-        window.location.href = 'http://localhost:3000/classes'
+        window.location.href = 'http://localhost:3000/'
       }
 
     })
