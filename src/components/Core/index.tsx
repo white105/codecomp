@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import HomePage from "../HomePage";
-import Login from "../Login";
-import Loader from "../Loader";
+import Login from "../Login/index";
 import PlayMode from "../PlayMode";
-import Profile from "../Profile";
-import Signup from "../Signup";
+import Profile from "../Profile/index";
+import Signup from "../Signup/index";
 import RankChoices from "../RankChoices";
-import Arena from "../Arena";
+import Loader from "../Loader";
+import Arena from "../Arena/index";
 
 const Core: React.FC = () => {
   return (
