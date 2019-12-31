@@ -1,5 +1,5 @@
 import React from "react";
-import Core from "./components/Core";
+import Core from "./components/Core/index";
 import "./App.scss";
 
 const App: React.FC = () => {
