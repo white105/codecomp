@@ -5,19 +5,29 @@
   background-color: #282c34;
 }
 
-#profileContainer {
+.profileContainer {
+  width: 50%;
+  height: 100%;
   margin: auto;
-  margin-top: 7.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileImageFrame {
   width: 14rem;
   height: 14rem;
   border: 3px solid white;
-  border-radius: 50%;
   padding-top: 1rem;
 }
 
 .codecomp-avatar-large {
-  width: 10rem;
+  width: 12rem;
   height: 12rem;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .codecomp-avatar-small {
@@ -34,11 +44,15 @@
 }
 
 .profile-color-button-container {
-  width: 35rem;
-  height: 5rem;
+  width: 5rem;
+  height: 20rem;
   margin: auto;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+
+  border-top-left-radius:50%;
+  border-bottom-left-radius:50%;
 }
 
 .color-button {
@@ -52,25 +66,30 @@
   }
 }
 
-#red-button {
+#color-button1 {
   background: red;
+  margin-left: 30px;
 }
 
-#blue-button {
+#color-button2 {
   background: blue;
+  margin-left: 10px;
 }
 
-#green-button {
+#color-button3 {
   background: green;
 }
 
-#purple-button {
-  background: purple;
+#color-button4 {
+  background: orange;
+  margin-left: 10px;
 }
 
-#orange-button {
-  background: orange;
+#color-button5 {
+  background: purple;
+  margin-left: 30px;
 }
+
 
 
 .profile-sidebar {
@@ -118,12 +137,10 @@
   font-size: 1.3rem;
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
-  border-bottom: 1px solid black;
   color:white;
   height: 4rem;
   outline: none;
   border: none;
-  border-top: 1px solid white;
   border-bottom: 1px solid white;
 }
 
@@ -151,11 +168,15 @@
 }
 
 .profile-image-choices {
-  width: 35rem;
-  height: 5rem;
+  width: 5rem;
+  height: 20rem;
   margin: auto;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+
+  border-top-right-radius:50%;
+  border-bottom-right-radius:50%;
 }
 
 .profile-image-choice {
@@ -163,4 +184,25 @@
   height: 3.5rem;
   border-radius: 50%;
   border: 2px solid white;
+
+}
+
+#profile-image-choice1 {
+
+}
+
+#profile-image-choice2 {
+  margin-left: 10px;
+}
+
+#profile-image-choice3 {
+  margin-left: 20px;
+}
+
+#profile-image-choice4 {
+  margin-left: 10px;
+}
+
+#profile-image-choice5 {
+
 }

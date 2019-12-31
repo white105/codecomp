@@ -20,11 +20,9 @@ class HomePage extends Component {
       return (
         <div id="HomePageComponent">
           <div id="trophy-container-top-left">
-          <FontAwesome id='font-awesome-trophy' name='trophy' size='2x'/>
-            <h3 id="font-aweome-title">105</h3>
 
           </div>
-        <Link className='home-page-link' to='/profile'><img id="codecomp-avatar-small" src={require("../../assets/codecomp-profile.png")}></img></Link>
+        <Link className='home-page-link' to='/profile'><img id="codecomp-avatar-small" src={require("../../assets/default-profile.png")}></img></Link>
           <div id="home-page-main-container">
             <img id="website-logo" src={require("../../assets/codecomp.png")}></img>
             <Link className='home-page-link' to='/play-mode'><button className="home-page-button">PLAY</button></Link>

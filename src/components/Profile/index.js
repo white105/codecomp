@@ -32,6 +32,7 @@ class Profile extends Component {
     this.getRandomColor = this.getRandomColor.bind(this)
     this.showFriendProfile = this.showFriendProfile.bind(this)
     this.hideFriendProfile = this.hideFriendProfile.bind(this)
+    this.showProfilePhotoOptions = this.showProfilePhotoOptions.bind(this)
   }
 
   getRandomColor() {
@@ -64,6 +65,10 @@ class Profile extends Component {
     this.setState({ image_url : image_url })
   }
 
+  showProfilePhotoOptions() {
+
+  }
+
   render() {
     let friends = this.state.friends.map((friend) => {
       let bgColor = '#8400ff'
@@ -80,7 +85,7 @@ class Profile extends Component {
 
     let friendProfile = this.state.friendProfile
     return (
-      <div id="profileComponent" style={{ backgroundColor : this.state.color }}>
+      <div id="profileComponent">
 
       <Rodal visible={this.state.showFriendProfile} onClose={this.hideFriendProfile}>
         <div className="friend-profile">
@@ -92,8 +97,28 @@ class Profile extends Component {
 
 
       <Link className='home-page-link' to='/'><img id="codecomp-trophy-small" src={require("../../assets/codecomp-small.png")}></img></Link>
-        <div id="profileContainer">
-          <img className="codecomp-avatar-large" src={require("../../assets/codecomp-profile.png")}></img>
+
+        <div className="profileContainer">
+
+          <div className="profile-color-button-container">
+            <button className="color-button" id="color-button1" onClick={() => this.updateProfileColor("red")}></button>
+            <button className="color-button" id="color-button2" onClick={() => this.updateProfileColor("blue")}></button>
+            <button className="color-button" id="color-button3" onClick={() => this.updateProfileColor("green")}></button>
+            <button className="color-button" id="color-button4" onClick={() => this.updateProfileColor("orange")}></button>
+            <button className="color-button" id="color-button5" onClick={() => this.updateProfileColor("purple")}></button>
+          </div>
+
+          <div className="profileImageFrame" style={{ backgroundColor : this.state.color }} >
+            <img onClick={this.showProfilePhotoOptions} className="codecomp-avatar-large" src={require("../../assets/default-profile.png")}></img>
+          </div>
+
+          <div className="profile-image-choices">
+            <img className="profile-image-choice" id="profile-image-choice1" src={require('../../assets/profile-image-choices/techlead.jpg')}></img>
+            <img className="profile-image-choice" id="profile-image-choice2" src={require('../../assets/profile-image-choices/bezos.jpg')}></img>
+            <img className="profile-image-choice" id="profile-image-choice3" src={require('../../assets/profile-image-choices/zuck.jpg')}></img>
+            <img className="profile-image-choice" id="profile-image-choice4" src={require('../../assets/profile-image-choices/elon.jpg')}></img>
+            <img className="profile-image-choice" id="profile-image-choice5" src={require('../../assets/profile-image-choices/gates.jpg')}></img>
+          </div>
         </div>
 
         <h3 className="profile-title">{this.state.username}</h3>
@@ -101,24 +126,7 @@ class Profile extends Component {
 
         <h3 className="profile-title">trophies - {this.state.trophies}</h3>
 
-        <div className="profile-color-button-container">
 
-          <button className="color-button" id="red-button" onClick={() => this.updateProfileColor("red")}></button>
-          <button className="color-button" id="blue-button" onClick={() => this.updateProfileColor("blue")}></button>
-          <button className="color-button" id="green-button" onClick={() => this.updateProfileColor("green")}></button>
-          <button className="color-button" id="orange-button" onClick={() => this.updateProfileColor("orange")}></button>
-          <button className="color-button" id="purple-button" onClick={() => this.updateProfileColor("purple")}></button>
-
-        </div>
-
-        <div className="profile-image-choices">
-
-          <img className="profile-image-choice" src={require('../../assets/profile-image-choices/techlead.jpg')}></img>
-          <img className="profile-image-choice" src={require('../../assets/profile-image-choices/bezos.jpg')}></img>
-          <img className="profile-image-choice" src={require('../../assets/profile-image-choices/zuck.jpg')}></img>
-          <img className="profile-image-choice" src={require('../../assets/profile-image-choices/elon.jpg')}></img>
-          <img className="profile-image-choice" src={require('../../assets/profile-image-choices/gates.jpg')}></img>
-        </div>
 
 
         <div className="profile-sidebar">
