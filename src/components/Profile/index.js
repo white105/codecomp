@@ -26,7 +26,8 @@ class Profile extends Component {
         username : '',
         trophies : 100
       },
-      showFriendProfile : false
+      showFriendProfile : false,
+      settingsVisible : false
     }
 
     this.getRandomColor = this.getRandomColor.bind(this)
@@ -66,7 +67,7 @@ class Profile extends Component {
   }
 
   showProfilePhotoOptions() {
-
+    this.setState({ settingsVisible : !this.state.settingsVisible })
   }
 
   render() {
@@ -100,7 +101,7 @@ class Profile extends Component {
 
         <div className="profileContainer">
 
-          <div className="profile-color-button-container">
+          <div className="profile-color-button-container" style={{ display : this.state.settingsVisible ? 'flex' : 'none' }}>
             <button className="color-button" id="color-button1" onClick={() => this.updateProfileColor("red")}></button>
             <button className="color-button" id="color-button2" onClick={() => this.updateProfileColor("blue")}></button>
             <button className="color-button" id="color-button3" onClick={() => this.updateProfileColor("green")}></button>
@@ -112,7 +113,7 @@ class Profile extends Component {
             <img onClick={this.showProfilePhotoOptions} className="codecomp-avatar-large" src={require("../../assets/default-profile.png")}></img>
           </div>
 
-          <div className="profile-image-choices">
+          <div className="profile-image-choices" style={{ display : this.state.settingsVisible ? 'flex' : 'none' }}>
             <img className="profile-image-choice" id="profile-image-choice1" src={require('../../assets/profile-image-choices/techlead.jpg')}></img>
             <img className="profile-image-choice" id="profile-image-choice2" src={require('../../assets/profile-image-choices/bezos.jpg')}></img>
             <img className="profile-image-choice" id="profile-image-choice3" src={require('../../assets/profile-image-choices/zuck.jpg')}></img>
