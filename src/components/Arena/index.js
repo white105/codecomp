@@ -39,6 +39,7 @@ class Arena extends Component {
       language: "javascript"
     };
 
+    this.resetCode = this.resetCode.bind(this)
     this.runCode = this.runCode.bind(this);
     this.submitCode = this.submitCode.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -58,6 +59,10 @@ class Arena extends Component {
 
   handleChange(event) {
     this.setState({ language: event.target.value });
+  }
+
+  resetCode() {
+    this.setState({ code : ``})
   }
 
   render() {
@@ -110,20 +115,26 @@ class Arena extends Component {
         </div>
 
         <div className="text-editor">
-          <select
-            className="programming-language-choices"
-            value={this.state.language}
-            onChange={this.handleChange}
-          >
-            <option value="java">Java</option>
-            <option value="python">Python</option>
-            <option value="javascript">JavaScript</option>
-            <option value="c">C</option>
-            <option value="c++">C++</option>
-            <option value="go">Go</option>
-            <option value="ruby">Ruby</option>
-            <option value="swift">Swift</option>
-          </select>
+
+
+          <div className="editor-toolbar">
+            <select
+              className="programming-language-choices"
+              value={this.state.language}
+              onChange={this.handleChange}
+            >
+              <option value="java">Java</option>
+              <option value="python">Python</option>
+              <option value="javascript">JavaScript</option>
+              <option value="c">C</option>
+              <option value="c++">C++</option>
+              <option value="go">Go</option>
+              <option value="ruby">Ruby</option>
+              <option value="swift">Swift</option>
+            </select>
+
+            <button onClick={this.resetCode}>Reset</button>
+          </div>
 
           <Editor
             className="code-editor"
@@ -147,10 +158,12 @@ class Arena extends Component {
           </button>
         </div>
 
-        <div className="opponent-view" draggable="true"></div>
+
       </div>
     );
   }
 }
+
+/*<div className="opponent-view" draggable="true"></div>*/
 
 export default Arena;
