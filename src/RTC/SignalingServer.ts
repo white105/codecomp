@@ -13,7 +13,7 @@ interface Config {
     loglevel?: LogLevel
 }
 
-export default class SignallingServer {
+export default class SignalingServer {
     public socket: Socket;
     public onAnswer = new MiddlewareFunction();
     public onOffer = new MiddlewareFunction();
@@ -25,6 +25,8 @@ export default class SignallingServer {
     constructor(url: string, config?: Config) {
         // Set the log level
         config && config.loglevel && (logger.logLevel = config.loglevel)
+        // LOG PREFIX
+        logger.logPrefix = "[SIGNALING SERVER]: "
         this.socket = new Socket(url);
         this.socket.on('connect', () => logger.log('Successfully connected to the server', this.socket.id));
     }
@@ -40,32 +42,32 @@ export default class SignallingServer {
         if (desc) {
             if (desc.type === "offer") {
                 this.onOffer.execute(data);
-                logger.log('[SIGNALING SERVER]: received offer')
+                logger.log('received offer')
             }
             else if (desc.type === "answer") {
                 this.onAnswer.execute(data);
-                logger.log('[SIGNALING SERVER]: received answer')
+                logger.log('received answer')
             }
         } else if (candidate) {
             this.onCandidate.execute(data);
-            logger.log('[SIGNALING SERVER]: received candidate')
+            logger.log('received candidate')
         }
         if (msg) {
             if (msg.type === "reject") {
                 this.onRejection.execute(data);
-                logger.log('[SIGNALING SERVER]: received rejection');
+                logger.log('received rejection');
             }
             if (msg.type === "accepting_connections") {
                 this.onAcceptingConnections.execute(data);
-                logger.log('[SIGNALING SERVER]: accepting connections');
+                logger.log('accepting connections');
             }
             if (msg.type === "connection_request") {
                 this.onConnectionRequest.execute(data);
-                logger.log('[SIGNALING SERVER]: connection request');
+                logger.log('connection request');
             }
             if (msg.type === "metadata") {
                 this.onMetadata(data);
-                logger.log('[SIGNALING SERVER]: Metadata received', msg.data)
+                logger.log('Metadata received', msg.data)
             }
         }
     }
@@ -75,10 +77,10 @@ export default class SignallingServer {
     }
 
     createRoom(name: string) {
-        this.socket.emit('new_room', name);
+        this.socket.send({ type: 'new_room', data: name })
     }
 
     send(data?: any, event?: string): void {
-        this.socket.emit(event || 'signal', data);
+        this.socket.send({ type: event || 'signal', data })
     }
 }

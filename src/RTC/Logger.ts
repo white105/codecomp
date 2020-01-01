@@ -1,5 +1,3 @@
-const LOG_PREFIX = "RTC: ";
-
 /*
 Prints log messages depending on the debug level passed in. Defaults to 0.
 0 -> Prints no logs.
@@ -14,7 +12,7 @@ export enum LogLevel {
     all
 };
 
-const print = (logLevel: LogLevel, ...rest: any[]): void => {
+const print = (logLevel: LogLevel, LOG_PREFIX, ...rest: any[]): void => {
     const copy = [LOG_PREFIX, ...rest];
 
     for (let i in copy) {
@@ -30,21 +28,24 @@ const print = (logLevel: LogLevel, ...rest: any[]): void => {
 
 class Logger {
     private _logLevel = LogLevel.disabled;
+    private _LOG_PREFIX = "RTC: "
+
+    set logPrefix(prefix: string) { this._LOG_PREFIX = prefix }
 
     get logLevel(): LogLevel { return this._logLevel; }
 
     set logLevel(logLevel: LogLevel) { this._logLevel = logLevel; }
 
     log(...args: any[]) {
-        if (this._logLevel >= LogLevel.all) print(LogLevel.all, ...args);
+        if (this._logLevel >= LogLevel.all) print(LogLevel.all, this._LOG_PREFIX, ...args);
     }
 
     warn(...args: any[]) {
-        if (this._logLevel >= LogLevel.warnings) print(LogLevel.warnings, ...args);
+        if (this._logLevel >= LogLevel.warnings) print(LogLevel.warnings, this._LOG_PREFIX, ...args);
     }
 
     error(...args: any[]) {
-        if (this._logLevel >= LogLevel.errors) print(LogLevel.errors, ...args);
+        if (this._logLevel >= LogLevel.errors) print(LogLevel.errors, this._LOG_PREFIX, ...args);
     }
 }
 
