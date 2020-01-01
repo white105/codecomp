@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import alertify from "alertifyjs";
 import { Link } from "react-router-dom";
+import CodeService from '../../services/CodeService';
 import UserService from "../../services/UserService";
 
 //text editor
@@ -43,12 +44,15 @@ class Arena extends Component {
     this.runCode = this.runCode.bind(this);
     this.submitCode = this.submitCode.bind(this);
     this.handleChange = this.handleChange.bind(this);
+
+    this.codeService = new CodeService()
   }
 
   runCode() {
     //send code to API to be compiled and return results
 
     let code = this.state.code;
+    this.codeService.runCode(code)
   }
 
   submitCode() {
