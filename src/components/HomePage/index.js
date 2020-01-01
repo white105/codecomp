@@ -8,6 +8,7 @@ class HomePage extends Component {
   constructor() {
     super()
     this.state = {
+      elo_rating : 0,
       loggedIn : true
     }
 
@@ -22,7 +23,8 @@ class HomePage extends Component {
           <div id="trophy-container-top-left">
 
           </div>
-        <Link className='home-page-link' to='/profile'><img id="codecomp-avatar-small" src={require("../../assets/default-profile.png")}></img></Link>
+          <Link className='home-page-link' to='/profile'><img id="codecomp-avatar-small" src={require("../../assets/default-profile.png")}></img></Link>
+          <div className="elo-rating-container"><h3 className="elo-rating">{this.state.elo_rating}</h3></div>
           <div id="home-page-main-container">
             <img id="website-logo" src={require("../../assets/codecomp.png")}></img>
             <Link className='home-page-link' to='/play-mode'><button className="home-page-button">PLAY</button></Link>

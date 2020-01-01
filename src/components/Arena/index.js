@@ -12,10 +12,18 @@ import "prismjs/components/prism-markup";
 import "prismjs/components/prism-jsx";
 import { languages } from "prismjs/components/prism-core";
 
+
+//languages for syntax highlighting
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/components/prism-ruby";
 import "prismjs/themes/prism.css";
+import "prismjs/components/prism-java";
+import "prismjs/components/prism-python";
+import "prismjs/components/prism-c";
+import "prismjs/components/prism-cpp";
+import "prismjs/components/prism-go";
+import "prismjs/components/prism-swift";
 
 const code = `function add(a, b) {
   return a + b;
@@ -61,6 +69,24 @@ class Arena extends Component {
         break;
       case "ruby":
         syntax_highlight = languages.rb;
+        break;
+      case "java":
+        syntax_highlight = languages.java;
+        break;
+      case "python":
+        syntax_highlight = languages.python;
+        break;
+      case "c":
+        syntax_highlight = languages.c;
+        break;
+      case "c++":
+        syntax_highlight = languages.cpp;
+        break;
+      case "go":
+        syntax_highlight = languages.go;
+        break;
+      case "swift":
+        syntax_highlight = languages.swift;
         break;
       default:
       // code block

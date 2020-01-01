@@ -63,8 +63,28 @@
 
 #codecomp-avatar-small {
   position: absolute;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
   right: 2rem;
   top: 1rem;
+}
+
+.elo-rating-container {
+  position: absolute;
+  top: 1rem;
+  right: 6rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #8400ff;
+  border: 2px solid white;
+
+}
+
+.elo-rating {
+  color: white;
 }
