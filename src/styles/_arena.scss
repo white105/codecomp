@@ -67,5 +67,46 @@
   height: 50%;
   overflow: scroll;
   outline: none;
-  background: lightblue;
+  border-bottom: 1px solid #ccc;
+}
+
+.editor-toolbar {
+  width: 100%;
+  height: 3rem;
+  background: #8c92ac;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.programming-language-choices {
+  width: 7rem;
+  height: 2rem;
+  margin: 1rem;
+}
+
+.reset-code-button {
+  width: 7rem;
+  height: 2rem;
+  margin: 1rem;
+}
+
+.editor-footer {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border: 1px solid #ccc;
+}
+
+
+.test-case {
+  width: 30rem;
+  height: 8rem;
+  background: lightgray;
+  margin: auto;
+  margin-top: 2rem;
+  overflow-x: scroll;
+  overflow-y: scroll;
 }

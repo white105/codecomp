@@ -4,6 +4,13 @@ import { Link } from 'react-router-dom';
 import FontAwesome from 'react-fontawesome'
 
 class PlayMode extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      elo_rating: 0
+    }
+  }
 
   render() {
     return (
@@ -12,6 +19,7 @@ class PlayMode extends Component {
         <div id="trophy-container-top-left">
       </div>
       <Link className='home-page-link' to='/profile'><img id="codecomp-avatar-small" src={require("../../assets/default-profile.png")}></img></Link>
+      <div className="elo-rating-container"><h3 className="elo-rating">{this.state.elo_rating}</h3></div>
 
         <div id="PlayModeComponent">
 

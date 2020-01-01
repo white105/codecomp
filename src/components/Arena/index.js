@@ -133,7 +133,7 @@ class Arena extends Component {
               <option value="swift">Swift</option>
             </select>
 
-            <button onClick={this.resetCode}>Reset</button>
+            <button className="reset-code-button" onClick={this.resetCode}>Reset</button>
           </div>
 
           <Editor
@@ -150,12 +150,24 @@ class Arena extends Component {
             }}
           />
 
-          <button className="submit-button" onClick={this.runCode}>
-            Run Code
-          </button>
-          <button className="submit-button" onClick={this.submitCode}>
-            Submit
-          </button>
+          <div className="editor-footer">
+            <button className="submit-button" onClick={this.runCode}>
+              Run Code
+            </button>
+            <button className="submit-button" onClick={this.submitCode}>
+              Submit
+            </button>
+          </div>
+
+
+          <div className="output-container">
+
+            <div className="test-case"></div>
+
+            <div className="output"></div>
+
+
+          </div>
         </div>
 
 
