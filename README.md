@@ -107,6 +107,8 @@ In this setup, the host's "build" directory is directly mounted inside the conta
 
 **This requires cra-build-watch because react-scripts doesn't support writing to disk**
 
+**You need to run 'npm run watch' before starting the container to ensure "build" exists**
+
 ```
 $ docker run --rm --name codecomp \
     -e PROXY_ENABLED="0" \
