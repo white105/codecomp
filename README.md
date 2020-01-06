@@ -87,11 +87,11 @@ $ docker run --rm --name codecomp \
 
 The next two options are the most useful for developers. The first allows for running the built in npm server inside the docker container with the source code mounted. Changes will be automatically applied, but the server will not proxy traffic (though you can still set the API_URL value using the API_BACKEND_XX values when it's integrated). The second allows for running nginx with proxying enabled as well "watching" the source code for changes. With this mode, changes are applied on browser refresh.
 
-**Do not mount node_modules inside the container. Sass will most likely fail. Only mount the "src" directory. Others can be mounted indvidually as well, just not node_modules. Rebuild if new packages are added**
+**Do not mount node_modules inside the container. Sass will most likely fail as the container is alpine. It will 100% failure if you're host is not linux. Therefore, only mount the "src" directory. Others can be mounted indvidually as well, just not node_modules. Rebuild if new packages are added**
 
 ### Serve the Dynmic Frontend via NPM with Automatic Refresh
 
-The code should be automatically refreshed. The API_URL can be set using API_BACKEND_XX options (not yet integrated). Notice that "src" is mounted explicitly and node_modules are ignored. Rebuild container for new packages.
+The code should be automatically refreshed. The API_URL can be set using API_BACKEND_XX options. These values will be combined to create the REACT_APP_API_URL environment variable within the container. Notice that "src" is mounted explicitly and node_modules are ignored. Rebuild container for new packages.
 
 ```
 $ docker run --rm --name codecomp \
@@ -103,11 +103,35 @@ $ docker run --rm --name codecomp \
 
 ### Serve the Dynmic Frontend via Nginx with Manual Refreshes
 
-In this setup, the host's "build" directory is directly mounted inside the container. You have to run "npm run watch" on the host to watch for changes. As should be obvious, this setup just relies on building on the host and syncs the output to the directory which nginx is serving. The API_BACKEND_XX values do not matter. The API_URL has to be configured from the host. In addition, the "build" directory cannot be deleted by npm/react or the volume will stop syncing. If you think consecutive builds are causing problems, nuke the "build" directory, restart the watcher, and restart the container (do not need to rebuild container).
+In this setup, the host's "build" directory is directly mounted inside the container. You have to run "npm run watch" on the host to watch for changes. As should be obvious, this setup just relies on building on the host and syncs the output to the directory which nginx is serving. The API_BACKEND_XX still matter if you plan on proxying traffic throuh nginx. The API_URL (REACT_APP_API_URL) has to be configured from the host.
+
+In addition, the "build" directory cannot be deleted by npm/react or the volume will stop syncing. If you think consecutive builds are causing problems, nuke the "build" directory, restart the watcher, and restart the container (do not need to rebuild container).
 
 **This requires cra-build-watch because react-scripts doesn't support writing to disk**
 
+First, since you will be building the frontend on the host, you need to tell the app where the backend API is. This is done via an environment variable called REACT_APP_API_URL. For example, if the backend is running in a separate session on port 9999, you'd run:
+
+```
+$ export REACT_APP_API_URL="http://127.0.0.1:9999"
+```
+
+**However**, if you are not running the API on a separate container, but nginx is proxying to it, you'd set the value to the same destination you are serving the app on (from the perspective on the host). Assuming you're listening on 8080 for the app, you'd run.
+
+```
+$ export REACT_APP_API_URL="http://127.0.0.1:8080"
+```
+
+This second form is unlikely to be the case as you will most likely be using docker-compose in that situation.
+
+Second, run the watcher before starting the container. This ensures the "build" directory exists. This needs to be run in the same session you exported the REACT_APP_API_URL variable in.
+
+```
+$ npm run watch
+```
+
 **You need to run 'npm run watch' before starting the container to ensure "build" exists**
+
+Third, in a different terminal session, run the app:
 
 ```
 $ docker run --rm --name codecomp \

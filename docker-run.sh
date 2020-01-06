@@ -151,9 +151,9 @@ $NGINX_HTTP_BLOCK
 EOF
 )
         if [ "1" = "$PROXY_ENABLED" ]; then
-            echo "Using API : ${API_BACKEND_PROTO}://${API_BACKEND_HOST}:${API_BACKEND_PORT}";
+            echo "Using Proxy API URL: ${API_BACKEND_PROTO}://${API_BACKEND_HOST}:${API_BACKEND_PORT}";
         else
-            echo "Backend proxy is disabled"
+            echo "Backend Proxying diabled in Nginx mode. API_URL will be default or whatever was set at build time";
         fi
 
         # sudo is unavailable within alpine, don't drop privs inside Dockerfile
@@ -165,8 +165,21 @@ EOF
         fi
         exec nginx -g "daemon off;";
     elif [ "npm" = "$mode" ]; then 
-        export PORT=$INSECURE_LISTEN_PORT;
         cd /usr/src/app;
+        # port which npm will listen on, needs to be exposed
+        export PORT=$INSECURE_LISTEN_PORT;
+
+        # setup the API_URL which frontend code will use as npm will not proxy
+        ## for 80/443, don't append port
+        if [ "80" = "${API_BACKEND_PORT}" ]; then 
+            API_URL="${API_BACKEND_PROTO}://${API_BACKEND_HOST}"
+        elif [ "443" = "${API_BACKEND_PORT}" ]; then 
+            API_URL="${API_BACKEND_PROTO}://${API_BACKEND_HOST}"
+        else
+            API_URL="${API_BACKEND_PROTO}://${API_BACKEND_HOST}:${API_BACKEND_PORT}"
+        fi
+        echo "Using Direct API URL: $API_URL";
+        export REACT_APP_API_URL="${API_URL}"
         exec npm start
     else 
         echo "No valid server mode found for $mode" >&2;
