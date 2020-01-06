@@ -24,7 +24,7 @@ $ cd /path/to/codecomp/repo;
 $ docker build -t white105/codecomp:latest .
 ```
 
-### Serving via Nginx and Proxying to Go API
+### Mode 1: Serving via Nginx and Proxying to Go API
 
 Note: This approach assumes you have a backend API running on the same docker network or otherwise accessible to the frontend container. In general, it is better to use docker-compose for this configuraiton.
 
@@ -44,9 +44,18 @@ $ docker run --rm --name codecomp \
 
 The application will be served on port 127.0.0.1:8080.
 
-### Serving via Nginx without Proxy to Go API
+### Mode 2: Serving via Nginx without Proxy to Go API
 
-When you do not proxy traffic, the frontend will still be served, but you will need to specify the backend proxy. The API_BACKEND_XX values will be used to the API_URL (not yet complete) which will be available from the frontend.
+When you do not proxy traffic but stll use nginx, the frontend will still be served, but you will need to specify the backend proxy at docker build time. As the front-end will be static (what is built at docker build time is what you get), you have to use a docker build argument.
+
+**This isnt'a very useful mode**, but if you want, first, build the container with the correct argument. For example, if your API is located at 127.0.0.1:9999 from the host's perspectivate, run:
+
+```
+$ cd /path/to/codecomp/repo;
+$ docker build \
+    --build-arg REACT_APP_API_URL="http://127.0.0.1:9999" \
+    -t white105/codecomp:hardcoded .
+```
 
 ```
 $ docker run --rm --name codecomp \
@@ -54,26 +63,12 @@ $ docker run --rm --name codecomp \
     -e INSECURE_LISTEN_PORT=8080 \
     -e TLS_ENABLED="0" \
     -e DEBUG_CONF="1" \
-    -e API_BACKEND_PROTO="http" \
-    -e API_BACKEND_HOST="127.0.0.1" \
-    -e API_BACKEND_PORT="9999"\
-    -p 8080:8080 white105/codecomp
+    -p 8080:8080 white105/codecomp:hardcoded
 ```
 
-### Serve the Built Frontend via NPM
+### Mode 3: Serve the Built Frontend via NPM
 
-This mode does not proxy traffic and is not dynamic. Changes to the code will not be immediately seen inside the container. The code that will be run is the code that was copied into the container at build time. It may useful when only doing backend development if you plan on never touching the frontend (otherwise you have to rebuild the container).
-
-```
-$ docker run --rm --name codecomp \
-    -e SERVER="npm" \
-    -e INSECURE_LISTEN_PORT=8080 \
-    -p 8080:8080 white105/codecomp
-```
-
-### Serve the Built Frontend via NPM
-
-This mode does not proxy traffic and is not dynamic. Changes to the code will not be immediately seen inside the container. The code that will be run is the code that was copied into the container at build time. It may useful when only doing backend development if you plan on never touching the frontend (otherwise you have to rebuild the container). The API_BACKEND_XX values can be used to set API_URL.
+This mode does not proxy traffic and is not dynamic. Changes to the code will not be immediately seen inside the container. The code that will be run is the code that was copied into the container at build time. It may useful when only doing backend development if you plan on never touching the frontend (otherwise you have to rebuild the container). The API_BACKEND_XX values can be used to set REACT_APP_API_URL inside the container. Assuming you have an API server running on port 9999 from the perspective on the host:
 
 ```
 $ docker run --rm --name codecomp \
@@ -89,9 +84,9 @@ The next two options are the most useful for developers. The first allows for ru
 
 **Do not mount node_modules inside the container. Sass will most likely fail as the container is alpine. It will 100% failure if you're host is not linux. Therefore, only mount the "src" directory. Others can be mounted indvidually as well, just not node_modules. Rebuild if new packages are added**
 
-### Serve the Dynmic Frontend via NPM with Automatic Refresh
+### Mode 4: Serve the Dynmic Frontend via NPM with Automatic Refresh
 
-The code should be automatically refreshed. The API_URL can be set using API_BACKEND_XX options. These values will be combined to create the REACT_APP_API_URL environment variable within the container. Notice that "src" is mounted explicitly and node_modules are ignored. Rebuild container for new packages.
+The code should be automatically refreshed. The REACT_APP_API_URL/API_URL value can be set using API_BACKEND_XX options. These values will be combined to create the REACT_APP_API_URL environment variable within the container which will be available as the API_URL within the frontend config.js file. **Notice that "src" is mounted** explicitly and node_modules are ignored. Rebuild container for new packages.
 
 ```
 $ docker run --rm --name codecomp \
@@ -101,7 +96,7 @@ $ docker run --rm --name codecomp \
     -p 8080:8080 white105/codecomp
 ```
 
-### Serve the Dynmic Frontend via Nginx with Manual Refreshes
+### Mode 5: Serve the Dynmic Frontend via Nginx with Manual Refreshes
 
 In this setup, the host's "build" directory is directly mounted inside the container. You have to run "npm run watch" on the host to watch for changes. As should be obvious, this setup just relies on building on the host and syncs the output to the directory which nginx is serving. The API_BACKEND_XX still matter if you plan on proxying traffic throuh nginx. The API_URL (REACT_APP_API_URL) has to be configured from the host.
 

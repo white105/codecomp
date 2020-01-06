@@ -1,6 +1,12 @@
 
 ### Builder Container ### 
 FROM alpine:3.10 as build-stage
+
+ARG REACT_APP_API_URL
+
+# Do not use this environment
+ENV REACT_APP_API_URL_=$REACT_APP_API_URL
+
 RUN mkdir -p /usr/src/app && \
     rm -rf /var/cache/apk/* \
     && rm -rf /tmp/* && \
@@ -27,9 +33,10 @@ COPY ./tsconfig.json /usr/src/app/tsconfig.json
 COPY ./yarn.lock /usr/src/app/yarn.lock
 
 # TODO: this should be prod, use build arg to include devtools but default to prod
-RUN npm run build
+RUN REACT_APP_API_URL=$REACT_APP_API_URL_ npm run build
 
 ### Main Container ###
+### Because we're supporting the dev server here, not a huge benefit for multi-stage builds ###
 FROM alpine:3.10
 
 RUN rm -rf /var/cache/apk/* \
