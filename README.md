@@ -2,6 +2,10 @@
 
 CodeComp is a competive coding platform for developers and coders to test their skills in live competitions. It is currently in the early stages of development and following instructions are aimed at developers.
 
+## Before Reading The Instructions
+
+There is a docker-compose project in the works called codecomp-compose. This compose project encapsulates alot of this knowledge. In general, it's better to leverage codecomp-compose than attempt to run the container in an isolated terminal session as there may be other services that are required for it to function appropriately.
+
 ## Using The Docker Container
 
 The Docker container contains a multi-stage build that first installs the dependencies, then builds the project. Whether the output of this build project is actually used depends on your command. The primary container pulls the built app from the "build" directory and places it in "/var/www/app". The rest of the application is stored in "/usr/src/app". In addition, the main container has both nginx and npm installed meaning that you can serve the app using nginx or the built in react-scripts server (`npm start`). Finally, when using nginx, the configuration is dynamically built at run time allowing for some customization in configuration.
