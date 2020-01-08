@@ -9,7 +9,7 @@ class HomePage extends Component {
     super()
     this.state = {
       elo_rating : 0,
-      loggedIn : true
+      loggedIn : false
     }
 
   }
