@@ -3,6 +3,10 @@ import alertify from "alertifyjs";
 import { Link } from "react-router-dom";
 import UserService from "../../services/UserService";
 
+import { GoogleLogin } from 'react-google-login';
+import GitHubLogin from 'react-github-login';
+
+
 class Login extends Component {
   constructor() {
     super();
@@ -46,6 +50,15 @@ class Login extends Component {
   }
 
   render() {
+
+    const responseGoogle = (response) => {
+      console.log(response);
+    }
+
+    const onSuccess = response => console.log(response);
+    const onFailure = response => console.error(response);
+
+
     return (
       <div id="LoginComponent">
         <Link className="home-page-link" to="/">
@@ -82,6 +95,21 @@ class Login extends Component {
             <button className="login-page-button">SIGN UP</button>
           </Link>
         </div>
+
+        <GoogleLogin
+          clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={responseGoogle}
+          onFailure={responseGoogle}
+          cookiePolicy={'single_host_origin'}
+        ></GoogleLogin>
+
+        <GitHubLogin clientId="ac56fad434a3a3c1561e"
+            onSuccess={onSuccess}
+            onFailure={onFailure}></GitHubLogin>
+
+        
+
       </div>
     );
   }
