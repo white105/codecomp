@@ -15,7 +15,7 @@
     "react-github-login": "^1.0.3",
     "react-google-login": "^5.0.7",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "2.1.8",
+    "react-scripts": "^2.1.8",
     "react-simple-code-editor": "^0.10.0",
     "request": "^2.88.0",
     "rodal": "^1.7.0"
@@ -23,6 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "watch": "cra-build-watch",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -39,6 +40,7 @@
     "@types/node": "^13.1.2",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
+    "cra-build-watch": "^3.0.0",
     "typescript": "^3.7.4"
   }
 }
