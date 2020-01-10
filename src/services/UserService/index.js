@@ -35,7 +35,7 @@ class UserService {
       password: password
     };
 
-    var url = "http://localhost:8080/login";
+    var url = API_URL + "/api/v1/login";
     var options = {
       method: "post",
       body: postData,
